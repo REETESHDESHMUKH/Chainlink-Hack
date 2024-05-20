@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Topbar from "./components/topbar";
+import BetDashboard from "./components/betDashboard";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <div className="flex flex-row">
         <Navbar/>
         {children}
+        <BetDashboard/>
         </div>
       </body>
     </html>
