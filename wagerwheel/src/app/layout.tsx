@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/navbar";
+import Topbar from "./components/topbar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-mono">{children}</body>
+      <body className="font-mono">
+        <Topbar/>
+        <div className="flex flex-row">
+        <Navbar/>
+        {children}
+        </div>
+      </body>
     </html>
   );
 }

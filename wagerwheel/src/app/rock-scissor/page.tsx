@@ -10,7 +10,7 @@ export default function Rock() {
         setCurrentMultiplier(currentMultiplier+0.50);
     }
     return (
-        <div className="p-6 m-auto my-7 h-[650px] w-[1000px] bg-gradient-to-r from-slate-100 to-slate-200 rounded-md">
+        <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200 rounded-md">
             <div className="grid grid-rows-3 gap-10">
                 <div className="flex flex-cols justify-between">
                     <div className="flex justify-center bg-red-200 text-center rounded-full w-24 h-24 text-black">
