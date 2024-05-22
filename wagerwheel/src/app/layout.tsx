@@ -22,9 +22,10 @@ export default function RootLayout({
       <body className="font-mono">
         <Topbar/>
         <div className="flex flex-row">
-        <Navbar/>
-        {children}
-        <BetDashboard/>
+            <Navbar/>
+            <div className="w-4/5">
+                {children}
+            </div>
         </div>
       </body>
     </html>

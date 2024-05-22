@@ -20,7 +20,7 @@ function classNames(...classes: string[]) {
 
 export default function Topbar() {
     return (
-        <Disclosure as="header" className="bg-gray-800 shadow divide-y-1">
+        <Disclosure as="header" className="bg-gray-800 shadow divide-y-1 border-b border-gray-700">
             {({ open }) => (
                 <>
                     <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
@@ -28,10 +28,11 @@ export default function Topbar() {
                             <div className="relative z-10 px-2 flex lg:px-0">
                                 <div className="flex-shrink-0 flex items-center">
                                     <img
-                                        className="block h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                                        className="block h-12 w-auto"
+                                        src="/logo.png"
                                         alt="Workflow"
                                     />
+                                <span className="flex text-gray-300 font-semibold px-2 pt-4 text-xl">Wager Wheels</span>
                                 </div>
                             </div>
                             <div className="relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0">
