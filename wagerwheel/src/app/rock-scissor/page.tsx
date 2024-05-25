@@ -205,8 +205,8 @@ export default function Rock() {
                     )}
                 </div>
             </div>
-            <GameOverOverlay isVisible={gameOver} />
-            {/* <Loading isVisible={gameOver} /> */}
+            {/* <GameOverOverlay isVisible={gameOver} /> */}
+            {/* <Loading isVisible={true} /> */}
         </div>
         
     )
