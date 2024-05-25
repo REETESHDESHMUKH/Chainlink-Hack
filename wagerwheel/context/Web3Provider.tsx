@@ -17,7 +17,7 @@ export default function Web3Provider({ children }: Web3ProviderProps) {
   useEffect(() => {
     const provider = new HDWalletProvider({
     mnemonic: {
-        phrase: "vicious extend soda secret acquire boy devote between core uniform blood expose",
+        phrase: "",
     },
     providerOrUrl: "https://eth-sepolia.g.alchemy.com/v2/BoX83v1qt3Xb36s8H4B0Bf-ZM5Vg0ABY",
     });
