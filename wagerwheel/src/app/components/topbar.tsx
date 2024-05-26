@@ -68,48 +68,17 @@ export default function Topbar() {
                             <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
                                 <button
                                     type="button"
-                                    className="flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
-                                    <span className="sr-only">View notifications</span>
-                                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                                </button>
-
-                                {/* Profile dropdown */}
-                                <Menu as="div" className="flex-shrink-0 relative ml-4">
-                                    <div>
-                                        <MenuButton className="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            <span className="sr-only">Open user menu</span>
-                                            <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
-                                        </MenuButton>
+                                    className="flex-shrink-0 bg-gray-300 rounded-md px-2 py-2 text-gray-600 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >    
+                                    <div className="flex-shrink-0 flex items-center">
+                                        <img
+                                            className="block h-5 pr-2 w-auto"
+                                            src="/wallet.png"
+                                            alt="Workflow"
+                                            />
+                                        Connect Wallet
                                     </div>
-                                    <Transition
-                                        as={Fragment}
-                                        enter="transition ease-out duration-100"
-                                        enterFrom="transform opacity-0 scale-95"
-                                        enterTo="transform opacity-100 scale-100"
-                                        leave="transition ease-in duration-75"
-                                        leaveFrom="transform opacity-100 scale-100"
-                                        leaveTo="transform opacity-0 scale-95"
-                                    >
-                                        <MenuItems className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
-                                            {userNavigation.map((item) => (
-                                                <MenuItem key={item.name}>
-                                                    {({ active }) => (
-                                                        <a
-                                                            href={item.href}
-                                                            className={classNames(
-                                                                active ? 'bg-gray-100' : '',
-                                                                'block py-2 px-4 text-sm text-gray-700'
-                                                            )}
-                                                        >
-                                                            {item.name}
-                                                        </a>
-                                                    )}
-                                                </MenuItem>
-                                            ))}
-                                        </MenuItems>
-                                    </Transition>
-                                </Menu>
+                                </button>
                             </div>
                         </div>
                     </div>

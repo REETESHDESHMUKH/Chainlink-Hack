@@ -2,7 +2,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import Web3Context from "./web3-context";
 import Web3 from "web3";
-import Message from "../../build/contracts/Message.json";
+import Message from "../../build/contracts/vrfFinal.json";
 import HDWalletProvider from "@truffle/hdwallet-provider";
 
 interface Web3ProviderProps {

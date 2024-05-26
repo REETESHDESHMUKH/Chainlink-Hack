@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.1.15",
-    "ganache": "^7.9.2"
+    "@chainlink/contracts": "^1.1.1",
+    "@truffle/hdwallet-provider": "^2.1.15"
   }
 }
