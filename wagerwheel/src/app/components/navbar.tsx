@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="max-container padding-container relative z-30 py-5 flex items-center justify-between">
         <div className="logo-container" style={{ paddingLeft: '20px' }}> {/* Add left padding here */}
             <Link href="/" className="flex flex-row gap-4">
-                <Image src="/logo2.png" alt="logo" width={74} height={29} />
+                <Image src="/logo.png" alt="logo" width={74} height={29} />
                 <span className="flex flex-cols items-center text-3xl">Wager Wheels</span>
             </Link>
         </div>
