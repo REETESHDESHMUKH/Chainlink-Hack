@@ -94,10 +94,18 @@ contract vrfFinal is VRFConsumerBaseV2Plus {
         users[msg.sender].balance += msg.value;
     }
 
-    function updateBalance(uint256 amount) external {
-        users[msg.sender].balance += amount;
+    function updateBalance(uint256 amount,bool isAdd) external {
+        if(isAdd) {
+            users[msg.sender].balance += amount;
+        } else {
+            users[msg.sender].balance -= amount;
+        }
     }
 
+    function getBalance() public view returns (uint256) {
+        return users[msg.sender].balance;
+    }
+    
     function withdrawBalance(uint256 _amount) external {
         require(users[msg.sender].balance >= _amount, "Insufficient balance");
         users[msg.sender].balance -= _amount;

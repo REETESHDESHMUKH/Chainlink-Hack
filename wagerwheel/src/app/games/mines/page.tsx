@@ -1,9 +1,8 @@
 'use client';
 import React, { useContext, useState } from 'react';
-import Web3Context from '../../../context/web3-context';
-import GameOverOverlay from '../components/GameOverOverlay';
-import Loading from '../components/loading';
-
+import Web3Context from '../../../../context/web3-context';
+import GameOverOverlay from '@/app/components/GameOverOverlay';
+import Loading from '@/app/components/loading';
 type Block = {
   id: number;
   hasMine: boolean;
@@ -38,11 +37,10 @@ const getShuffleArray = (randomNumber: bigint[]): number[] => {
         [baseArray[i],baseArray[randomIndex]] = [baseArray[randomIndex],baseArray[i]];
         i--;
     }
-    console.log(baseArray);
     return baseArray;
 }
 const Mines = () => {
-  const { web3, account, contract } = useContext(Web3Context);
+  const { web3, account, contract, balance, updateBalance } = useContext(Web3Context);
   const [loading, setLoading] = useState<boolean>(false);
   const [tickets, setTickets] = useState<number>(1); 
   const [numMines, setNumMines] = useState<number>(1);
@@ -56,13 +54,17 @@ const Mines = () => {
   const [score, setScore] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
+  const [totalBlocks,setTotalBlocks] = useState<number>(25);
 
   const calculateEthAmount = (tickets: number): number => {
     return tickets * 0.005;
   };
 
   const startGame = async () => {
+    if(parseFloat(balance) < tickets*0.005) return ;
+
     try {
+        setTotalBlocks(25);
         setLoading(true);
         const response = await contract.methods.rollDice(account, 6, 20).send({ from: account });
         setTimeout(async () => {
@@ -77,13 +79,24 @@ const Mines = () => {
             } finally {
                 setLoading(false); 
             }
-        }, 60000);
+        }, 4000);
     } catch (err) {
         alert("Error occurred while starting the game");
         setLoading(false); 
     }
 };
 
+    const stopGame = async () => {
+        setGameOver(true);
+        const amount = tickets*0.005;
+        updateBalance(Number((score)*amount).toString(),true);
+        setTimeout(() => {
+            setGameOver(false); // Hide overlay after some time if needed
+            setScore(0);
+            setTotalBlocks(25);
+        }, 6000);
+        setGameStarted(false);
+    }
   const revealBlock = (id: number) => {
     if (gameOver || blocks[id].revealed) return;
 
@@ -92,21 +105,17 @@ const Mines = () => {
     setBlocks(newBlocks);
 
     if (newBlocks[id].hasMine) {
-        setGameOver(true);
-        setTimeout(() => {
-            setGameOver(false); // Hide overlay after some time if needed
-            setScore(0);
-        }, 6000);
-        setGameStarted(false);
+        stopGame()
         return ;
     } else {
-      setScore(score + 1);
+        setScore(Number(Number(score + 2*(numMines/totalBlocks)).toPrecision(2)));
+        setTotalBlocks(totalBlocks-1);
     }
   };
 
   return (
     <>
-        <div className='flex flex-row'>
+        <div className='flex flex-row bg-gray-200'>
         <div className="flex flex-col items-center mt-10 w-2/3">
         <div className="flex justify-center gap-10">
             <div className="grid grid-cols-5 grid-rows-5 gap-1">
@@ -183,10 +192,10 @@ const Mines = () => {
                         </div>
                     )}
 
-                    {!gameOver && (
+                    {gameStarted && (
                         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                            <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Score</label>
-                            <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{score} ETH</div>
+                            <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Multiplier</label>
+                            <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{score}x</div>
                         </div>
                     )}
                     <button
@@ -201,7 +210,7 @@ const Mines = () => {
                         <button
                             type="button"
                             className="mt-5 mx-1 bg-gray-100 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                            onClick={() => setGameOver(true)}
+                            onClick={stopGame}
                         >
                             Stop
                         </button>

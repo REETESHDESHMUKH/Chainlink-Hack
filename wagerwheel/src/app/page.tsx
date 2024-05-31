@@ -1,63 +1,38 @@
 'use client'
-import { useContext, useEffect, useState } from "react";
-import Web3Context from "../../context/web3-context";
-import { Button } from "@headlessui/react";
-import Loading from "./components/loading";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
+import { Tagline } from "./components/tagline";
+import { AboutProject } from "./components/aboutProject";
+import { Technologies } from "./components/technologies";
+import Navbar from "./components/navbar";
+import { Footer } from "./components/footer";
 
 
-export default function Home() {
-    const { web3, account, contract } = useContext(Web3Context);
-    const [loading,setLoading] = useState<boolean>(false);
-//   useEffect(() => {
-//     // if (web3 && account && contract) {
-//       // You can interact with web3, contract, account, and user here
-//       console.log('Web3 instance: ', web3);
-//       console.log('User account: ', account);
-//       console.log('Contract instance: ', contract);
-//     // } else {
+export default function Home ()  {
+    // Data AOS Animations
+    useEffect(() => {
+        AOS.init({
+          disable: "phone",
+          duration: 800,
+          easing: "ease-out-cubic",
+        });
+      }, []);
+    
+    return (
+        <div className="text-white">
+            <Navbar />
+          <div className="pt-32 pb-16 md:pt-52 md:pb-32 relative max-w-5xl min-h-screen px-4 mx-auto sm:px-6 space-y-80">
+            <Tagline />
+      
+            <AboutProject />
 
-//     // }
-//   }, [web3, account, contract]);
-
-//   return (
-//     <div>
-//       <p>Account: {account}</p>
-//     </div>
-//   );
-
-
-  const getMessage = async () => {
-    try{
-        setLoading(true);
-        const gas = await contract.methods.rollDice(account, 2, 4).estimateGas({ from: account });
-        const response = await contract.methods.rollDice(account, 2, 4).send({ from: account, gas });
-        console.log('Roll Dice Response:', response);
-    } catch(err) {
-        alert("error");
-    } finally {
-        setLoading(false);
-    }
-  };
-
-  const getRandomes = async () => {
-    try{
-        setLoading(true);
-        const random = await contract.methods.getRandom().call({from: account});
-        console.log(random);
-    } finally {
-        setLoading(false);
-    }
-  }
-
-  return (
-    <>
-        <div>
-        <h1>{account}</h1>
-        <Button onClick={()=>{getMessage()}}>Roll</Button>
-        <Button onClick={()=>{getRandomes()}}>get</Button>
+            <Technologies />
+            </div>
+            <Footer />
+            <div>
+          </div>
+          
         </div>
-        <Loading isVisible={loading}/>
-    </>
-  );
-
+    );
 }

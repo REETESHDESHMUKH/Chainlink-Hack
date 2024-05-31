@@ -1,19 +1,24 @@
 "use client"
 import { useContext, useState } from "react"
-import Web3Context from "../../../context/web3-context";
-import GameOverOverlay from "../components/GameOverOverlay";
-import Loading from "../components/loading";
+import Web3Context from "../../../../context/web3-context";
+import GameOverOverlay from "@/app/components/GameOverOverlay";
+import Loading from "@/app/components/loading";
+
+const rotationToMultiplier = [2,0,0.5,1,1.25,1.5];
 
 export default function SpinWheel() {
-    const { web3, account, contract } = useContext(Web3Context);
+    const { account, contract, balance,updateBalance } = useContext(Web3Context);
     const [loading,setLoading] = useState<boolean>(false);
     const [spinning,setSpinning] = useState<boolean>(false);
     const [finalRotation,setFinalRotation] = useState<number>(0);
     const [gameOver, setGameOver] = useState<boolean>(false);
     const [gameStarted, setGameStarted] = useState<boolean>(false);
     const [tickets, setTickets] = useState<number>(1);
-    
+    const [score, setScore] = useState<number>(0);
+
     const startGame = async () => {
+        if(parseFloat(balance) < tickets*0.005) return ;
+
         try {
             setLoading(true);
             const response = await contract.methods.rollDice(account, 1, 6).send({ from: account });
@@ -29,42 +34,46 @@ export default function SpinWheel() {
 
     const stopGame = async () => {
         const random = await contract.methods.getRandom().call({ from: account });
-        console.log(random);
-        setFinalRotation((Number(random[0])/6) * 360);
-        setSpinning(false);
-        setGameOver(true);
+        setFinalRotation(Number(random[0]-1)*60);
+        setScore(rotationToMultiplier[random[0]-1]);
         setTimeout(() => {
-            setGameOver(false);
-            setGameStarted(false);
-            setFinalRotation(0);
-        }, 4000);
+            setSpinning(false);
+            setGameOver(true);
+            setTimeout(() => {
+                const amount = tickets*0.005;
+                updateBalance(Number((score)*amount).toString(),true);
+                setGameOver(false);
+                setGameStarted(false);
+                setFinalRotation(0);
+            }, 4000);
+        },3000);
     }
     return (
         <>
             <div className='flex flex-row'>
-                <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200 rounded-md">
+                <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200">
                     <img className="h-12 w-12 m-auto p-2" src="/arrow-point-to-down.png" alt="image description">
                     </img>
-                    <img className={`h-1/2 m-auto p-2 ${spinning ? 'animate-spin' : ''}`} src="/lottery1.png" alt="image description" style={{ transform: `rotate(${finalRotation}deg)` }}>
+                    <img className={`h-1/2 m-auto p-2 transition-transform duration-[3000ms] ${spinning ? 'animate-spin' : ''}`} src="/lottery1.png" alt="image description" style={{ transform: `rotate(${finalRotation}deg)` }}>
                     </img>
-                    <div className="h-10 mt-10 mx-10 grid grid-cols-6 gap-4">
+                    <div className="h-1/12 mt-10 mx-10 grid grid-cols-6 gap-4">
+                        <div className="flex bg-[#019A85] rounded-lg">
+                            <span className="m-auto p-2">0x</span>
+                        </div>
+                        <div className="flex bg-[#7943A3] rounded-lg">
+                            <span className="m-auto p-2">0.50x</span>
+                        </div>
+                        <div className="flex bg-[#AF2F79] rounded-lg">
+                            <span className="m-auto p-2">1x</span>
+                        </div>
                         <div className="flex bg-[#F45542] rounded-lg">
                             <span className="m-auto p-2">1.25x</span>
                         </div>
-                        <div className="flex bg-[#AF2F79] rounded-lg">
-                            <span className="m-auto p-2">1.50x</span>
-                        </div>
-                        <div className="flex bg-[#7943A3] rounded-lg">
-                            <span className="m-auto p-2">1.75x</span>
-                        </div>
-                        <div className="flex bg-[#019A85] rounded-lg">
-                            <span className="m-auto p-2">2x</span>
+                        <div className="flex bg-[#FCA313] rounded-lg">
+                            <span className="m-auto p-2">1.5x</span>
                         </div>
                         <div className="flex bg-[#9CDB20] rounded-lg">
-                            <span className="m-auto p-2">2.25x</span>
-                        </div>
-                        <div className="flex bg-[#FCA313] rounded-lg">
-                            <span className="m-auto p-2">2.50x</span>
+                            <span className="m-auto p-2">2x</span>
                         </div>
                     </div>
                 </div>
@@ -83,11 +92,10 @@ export default function SpinWheel() {
                             </label>
                             <div className="mt-1 sm:mt-0 sm:col-span-2">
                                 <input
-                                type="text"
+                                type="number"
                                 placeholder="[1 - 200]"
                                 onChange={(e) => {
-                                    const value = e.target.value;
-                                    // setTickets(value === '' ? 0 : parseInt(value));
+                                    setTickets(parseInt(e.target.value));
                                 }}
                                 className="max-w-lg text-gray-700 p-2 shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
                                 />
@@ -99,14 +107,14 @@ export default function SpinWheel() {
                         { (
                             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">ETH Amount:</label>
-                                <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{} ETH</div>
+                                <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{tickets*0.005} ETH</div>
                             </div>
                         )}
 
-                        { (
+                        {gameStarted && (
                             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Score</label>
-                                <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{finalRotation} </div>
+                                <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Muliplier</label>
+                                <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{score} </div>
                             </div>
                         )}
                         <button
@@ -129,8 +137,9 @@ export default function SpinWheel() {
                     </div>
                 </div>
             </div>
-            <GameOverOverlay isVisible={gameOver} finalScore={finalRotation}/>
+            <GameOverOverlay isVisible={gameOver} finalScore={score}/>
             <Loading isVisible={loading} />
+            {/* <PendingTransactionOverlay isVisible={true} /> */}
         </>
     )
 }

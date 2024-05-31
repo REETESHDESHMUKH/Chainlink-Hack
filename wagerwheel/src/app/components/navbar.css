@@ -1,0 +1,5 @@
+.logo-container {
+  height: 100%; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+}

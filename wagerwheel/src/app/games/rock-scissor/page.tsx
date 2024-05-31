@@ -1,8 +1,8 @@
 'use client'
-import { useContext, useState } from "react"
-import GameOverOverlay from "../components/GameOverOverlay";
-import Loading from "../components/loading";
-import Web3Context from "../../../context/web3-context";
+import GameOverOverlay from "@/app/components/GameOverOverlay";
+import Loading from "@/app/components/loading";
+import { useContext, useState } from "react";
+import Web3Context from "../../../../context/web3-context";
 
 type Row = {
     id: number;
@@ -30,39 +30,41 @@ const generateRows = (indexes: bigint[]): Row[] => {
       isAttempted: false,
       attemptedOn: -1
     }));
+    // console.log(rows);
     return rows;
 };
 const calculateEthAmount = (tickets: number): number => {
     return tickets * 0.005;
   };
 
+const defaultRows = Array.from({ length: 5 }, (_, id) => ({
+    id,
+    element: [0,1,2],
+    isAttempted: false,
+    attemptedOn: -1
+  }));
 export default function Rock() {
-    const { web3, account, contract } = useContext(Web3Context);
+    const { web3, account, contract, balance, updateBalance } = useContext(Web3Context);
     const [loading,setLoading] = useState<boolean>(false);
     const [tickets, setTickets] = useState<number>(1); 
     const [chooseElement,setChooseElement] = useState<number>(-1);
     const [score,setScore] = useState<number>(0);
     const [rows, setRows] = useState<Row[]>(
-        Array.from({ length: 5 }, (_, id) => ({
-            id,
-            element: [0,1,2],
-            isAttempted: false,
-            attemptedOn: -1
-          }))
+        defaultRows
     );
     const [gameOver, setGameOver] = useState<boolean>(false);
     const [gameStarted, setGameStarted] = useState<boolean>(false);
 
     const startGame = async () => {
+        if(parseFloat(balance) < tickets*0.005) return ;
+
         try {
             setLoading(true);
-            const gas = await contract.methods.rollDice(account, 5, 6).estimateGas({ from: account });
-            const response = await contract.methods.rollDice(account, 5, 6).send({ from: account, gas });
-    
+            // updateBalance(Number(tickets*0.005).toString(),false);
+            const response = await contract.methods.rollDice(account, 5, 6).send({ from: account });
             setTimeout(async () => {
                 try {
                     const random = await contract.methods.getRandom().call({ from: account });
-                    console.log(random);
                     setRows(generateRows(random));
                     setGameOver(false);
                     setScore(0);
@@ -72,7 +74,7 @@ export default function Rock() {
                 } finally {
                     setLoading(false); 
                 }
-            }, 5000);
+            }, 10000);
         } catch (err) {
             alert("Error occurred while starting the game");
             setLoading(false); 
@@ -91,11 +93,14 @@ export default function Rock() {
         if ((chooseElement === 0 && (opt!==1)) || 
             (chooseElement === 1 && (opt!==2)) || 
             (chooseElement === 2 && (opt!==0))) {
-            setScore(score + 1);
+                if(id === 4) setScore(1.25);
+                else setScore(score + 0.25);
         } else {
-            console.log(chooseElement,opt);
             setGameOver(true);
+            const amount = tickets*0.005;
+            updateBalance(Number((score)*amount).toString(),true);
             setTimeout(() => {
+                setRows(defaultRows);
                 setGameOver(false); // Hide overlay after some time if needed
                 setScore(0);
             }, 6000);
@@ -103,12 +108,14 @@ export default function Rock() {
             return ;
         }
         
-        if(id === 4) {
-            console.log(chooseElement,opt);
+        if(id === 0) {
             setGameOver(true);
+            const amount = tickets*0.005;
+            updateBalance(Number((score-1)*amount).toString(),true);
             setTimeout(() => {
                 setGameOver(false); // Hide overlay after some time if needed
                 setScore(0);
+                setRows(defaultRows);
             }, 6000);
             setGameStarted(false);
             return ;
@@ -118,35 +125,35 @@ export default function Rock() {
     return (
         <>
             <div className='flex flex-row'>
-                <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200 rounded-md">
+                <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200">
                     <div className="grid grid-rows-5 gap-1">
                         {rows.map((row) => (   
                             <div className="h-14 mx-10 grid grid-cols-3 gap-4">
-                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-red-200 disabled:opacity-50' : 'bg-red-300'} ${row.attemptedOn===0 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
+                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-900'} ${row.attemptedOn===0 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
                                 onClick={()=>revealRows(row.id,0)}>
                                     <div className="m-auto">
                                         {row.isAttempted && 
-                                            <img className="h-8 w-8 rounded-lg" src={idToIcon[row.element[0]]} alt="image description">
+                                            <img className="h-10 w-10 rounded-lg" src={idToIcon[row.element[0]]} alt="image description">
                                             </img>
                                         }
                                     </div>
                                 </div>
 
-                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-red-200 disabled:opacity-50' : 'bg-red-300'} ${row.attemptedOn===1 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
+                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-900'} ${row.attemptedOn===1 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
                                 onClick={()=>revealRows(row.id,1)}>
                                     <div className="m-auto">
                                         {row.isAttempted && 
-                                            <img className="h-8 w-8 rounded-lg" src={idToIcon[row.element[1]]} alt="image description">
+                                            <img className="h-10 w-10 rounded-lg" src={idToIcon[row.element[1]]} alt="image description">
                                             </img>
                                         }
                                     </div>
                                 </div>
 
-                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-red-200 disabled:opacity-50' : 'bg-red-300'} ${row.attemptedOn===2 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
+                                <div className={`flex justify-center ${chooseElement===-1 ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-900'} ${row.attemptedOn===2 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
                                 onClick={()=>revealRows(row.id,2)}>
                                     <div className="m-auto">
                                         {row.isAttempted && 
-                                            <img className="h-8 w-8 rounded-lg" src={idToIcon[row.element[2]]} alt="image description">
+                                            <img className="h-10 w-10 rounded-lg" src={idToIcon[row.element[2]]} alt="image description">
                                             </img>
                                         }
                                     </div>
@@ -161,21 +168,21 @@ export default function Rock() {
                             <hr className="flex-grow border-t border-black"></hr>
                         </div> 
                         <div className="h-16 mx-10 grid grid-cols-3 gap-4 mt-2">
-                            <div className={`flex justify-center ${chooseElement === 0? 'bg-red-300 border border-gray-400':'bg-red-200'}  text-center rounded-lg cursor-pointer hover:bg-red-300`}>
+                            <div className={`flex justify-center ${chooseElement === 0? 'bg-gray-900 border border-gray-400':'bg-gray-700'}  text-center rounded-lg cursor-pointer hover:bg-gray-900`}>
                                 <div className="m-auto" onClick={()=>setChooseElement(0)}>
-                                    <img className="h-8 w-8 rounded-lg" src="/coal.png" alt="image description">
+                                    <img className="h-10 w-10 rounded-lg" src="/coal.png" alt="image description">
                                     </img>
                                 </div>
                             </div>
-                            <div className={`flex justify-center ${chooseElement === 1? 'bg-red-300 border border-gray-400':'bg-red-200'}  text-center rounded-lg cursor-pointer hover:bg-red-300`}>
+                            <div className={`flex justify-center ${chooseElement === 1? 'bg-gray-900 border border-gray-400':'bg-gray-700'}  text-center rounded-lg cursor-pointer hover:bg-gray-900`}>
                             <div className="m-auto" onClick={()=>setChooseElement(1)}>
-                                    <img className="h-8 w-8 rounded-lg" src="/paper.png" alt="image description">
+                                    <img className="h-10 w-10 rounded-lg" src="/paper.png" alt="image description">
                                     </img>
                                 </div>
                             </div>
-                            <div className={`flex justify-center ${chooseElement === 2? 'bg-red-300 border border-gray-400':'bg-red-200'}  text-center rounded-lg cursor-pointer hover:bg-red-300`}>
+                            <div className={`flex justify-center ${chooseElement === 2? 'bg-gray-900 border border-gray-400':'bg-gray-700'}  text-center rounded-lg cursor-pointer hover:bg-gray-900`}>
                                 <div className="m-auto" onClick={()=>setChooseElement(2)}>
-                                    <img className="h-8 w-8 rounded-lg" src="/scissors.png" alt="image description">
+                                    <img className="h-10 w-10 rounded-lg" src="/scissors.png" alt="image description">
                                     </img>
                                 </div>
                             </div>
@@ -199,7 +206,7 @@ export default function Rock() {
                                     const value = e.target.value;
                                     setTickets(value === '' ? 0 : parseInt(value));
                                 }}
-                                className="max-w-lg text-gray-700 p-2 shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                                className="max-w-lg text-gray-700 p-2 shadow-sm block w-full focus:ring-slate-700 focus:border-slate-500 sm:text-sm border border-gray-300 rounded-md"
                                 />
                             </div>
                         </div>
@@ -213,9 +220,9 @@ export default function Rock() {
                             </div>
                         )}
 
-                        {(
+                        {gameStarted && (
                             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Score</label>
+                                <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Multiplier</label>
                                 <div className="pt-2 sm:mt-0 sm:col-span-2 text-gray-500">{score}</div>
                             </div>
                         )}
