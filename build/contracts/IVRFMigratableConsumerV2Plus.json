@@ -1,0 +1,225 @@
+{
+  "contractName": "IVRFMigratableConsumerV2Plus",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "vrfCoordinator",
+          "type": "address"
+        }
+      ],
+      "name": "CoordinatorSet",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "vrfCoordinator",
+          "type": "address"
+        }
+      ],
+      "name": "setCoordinator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"vrfCoordinator\",\"type\":\"address\"}],\"name\":\"CoordinatorSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"vrfCoordinator\",\"type\":\"address\"}],\"name\":\"setCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This interface is designed to be used in VRFConsumerBaseV2Plus.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"setCoordinator(address)\":{\"notice\":\"Sets the VRF Coordinator addressThis method should only be callable by the coordinator or contract owner\"}},\"notice\":\"The IVRFMigratableConsumerV2Plus interface defines themethod required to be implemented by all V2Plus consumers.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFMigratableConsumerV2Plus.sol\":\"IVRFMigratableConsumerV2Plus\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFMigratableConsumerV2Plus.sol\":{\"keccak256\":\"0x8be8744e3b8380dc85354cf110e8caef8f394266e79120ad675a7da835ed2a85\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://12df6d3bd2130709c9f923e5dc8d6e8014c1d4bc35a2722c849f46bdbe1ea9cb\",\"dweb:/ipfs/QmVswk94A2g9KEbK792tw5o4X27HWzP2cw7wPmuRr116js\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/// @notice The IVRFMigratableConsumerV2Plus interface defines the\n/// @notice method required to be implemented by all V2Plus consumers.\n/// @dev This interface is designed to be used in VRFConsumerBaseV2Plus.\ninterface IVRFMigratableConsumerV2Plus {\n  event CoordinatorSet(address vrfCoordinator);\n\n  /// @notice Sets the VRF Coordinator address\n  /// @notice This method should only be callable by the coordinator or contract owner\n  function setCoordinator(address vrfCoordinator) external;\n}\n",
+  "sourcePath": "@chainlink\\contracts\\src\\v0.8\\vrf\\dev\\interfaces\\IVRFMigratableConsumerV2Plus.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFMigratableConsumerV2Plus.sol",
+    "exportedSymbols": {
+      "IVRFMigratableConsumerV2Plus": [
+        394
+      ]
+    },
+    "id": 395,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 382,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:5"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IVRFMigratableConsumerV2Plus",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 383,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:211:5",
+          "text": "@notice The IVRFMigratableConsumerV2Plus interface defines the\n @notice method required to be implemented by all V2Plus consumers.\n @dev This interface is designed to be used in VRFConsumerBaseV2Plus."
+        },
+        "fullyImplemented": false,
+        "id": 394,
+        "linearizedBaseContracts": [
+          394
+        ],
+        "name": "IVRFMigratableConsumerV2Plus",
+        "nameLocation": "278:28:5",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "eventSelector": "d1a6a14209a385a964d036e404cb5cfb71f4000cdb03c9366292430787261be6",
+            "id": 387,
+            "name": "CoordinatorSet",
+            "nameLocation": "317:14:5",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 386,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 385,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "vrfCoordinator",
+                  "nameLocation": "340:14:5",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 387,
+                  "src": "332:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 384,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "332:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "331:24:5"
+            },
+            "src": "311:45:5"
+          },
+          {
+            "documentation": {
+              "id": 388,
+              "nodeType": "StructuredDocumentation",
+              "src": "360:131:5",
+              "text": "@notice Sets the VRF Coordinator address\n @notice This method should only be callable by the coordinator or contract owner"
+            },
+            "functionSelector": "8ea98117",
+            "id": 393,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCoordinator",
+            "nameLocation": "503:14:5",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 391,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 390,
+                  "mutability": "mutable",
+                  "name": "vrfCoordinator",
+                  "nameLocation": "526:14:5",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 393,
+                  "src": "518:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 389,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "518:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "517:24:5"
+            },
+            "returnParameters": {
+              "id": 392,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "550:0:5"
+            },
+            "scope": 394,
+            "src": "494:57:5",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 395,
+        "src": "268:285:5",
+        "usedErrors": [],
+        "usedEvents": [
+          387
+        ]
+      }
+    ],
+    "src": "32:522:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.24+commit.e11b9ed9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-05-29T17:54:32.705Z",
+  "devdoc": {
+    "details": "This interface is designed to be used in VRFConsumerBaseV2Plus.",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "setCoordinator(address)": {
+        "notice": "Sets the VRF Coordinator addressThis method should only be callable by the coordinator or contract owner"
+      }
+    },
+    "notice": "The IVRFMigratableConsumerV2Plus interface defines themethod required to be implemented by all V2Plus consumers.",
+    "version": 1
+  }
+}

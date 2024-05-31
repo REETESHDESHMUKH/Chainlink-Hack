@@ -1,0 +1,1322 @@
+{
+  "contractName": "IVRFSubscriptionV2Plus",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "consumer",
+          "type": "address"
+        }
+      ],
+      "name": "addConsumer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "consumer",
+          "type": "address"
+        }
+      ],
+      "name": "removeConsumer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "cancelSubscription",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        }
+      ],
+      "name": "acceptSubscriptionOwnerTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "requestSubscriptionOwnerTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "createSubscription",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSubscription",
+      "outputs": [
+        {
+          "internalType": "uint96",
+          "name": "balance",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint96",
+          "name": "nativeBalance",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint64",
+          "name": "reqCount",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "consumers",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        }
+      ],
+      "name": "pendingRequestExists",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "startIndex",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxCount",
+          "type": "uint256"
+        }
+      ],
+      "name": "getActiveSubscriptionIds",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "subId",
+          "type": "uint256"
+        }
+      ],
+      "name": "fundSubscriptionWithNative",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"acceptSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"addConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"cancelSubscription\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"createSubscription\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"fundSubscriptionWithNative\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"startIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxCount\",\"type\":\"uint256\"}],\"name\":\"getActiveSubscriptionIds\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"getSubscription\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"balance\",\"type\":\"uint96\"},{\"internalType\":\"uint96\",\"name\":\"nativeBalance\",\"type\":\"uint96\"},{\"internalType\":\"uint64\",\"name\":\"reqCount\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"consumers\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"pendingRequestExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"removeConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"requestSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"acceptSubscriptionOwnerTransfer(uint256)\":{\"details\":\"will revert if original owner of subId has not requested that msg.sender become the new owner.\",\"params\":{\"subId\":\"- ID of the subscription\"}},\"addConsumer(uint256,address)\":{\"params\":{\"consumer\":\"- New consumer which can use the subscription\",\"subId\":\"- ID of the subscription\"}},\"cancelSubscription(uint256,address)\":{\"params\":{\"subId\":\"- ID of the subscription\",\"to\":\"- Where to send the remaining LINK to\"}},\"createSubscription()\":{\"details\":\"You can manage the consumer set dynamically with addConsumer/removeConsumer.Note to fund the subscription with LINK, use transferAndCall. For exampleLINKTOKEN.transferAndCall(address(COORDINATOR),amount,abi.encode(subId));Note to fund the subscription with Native, use fundSubscriptionWithNative. Be sureto send Native with the call, for example:COORDINATOR.fundSubscriptionWithNative{value: amount}(subId);\",\"returns\":{\"subId\":\"- A unique subscription id.\"}},\"fundSubscriptionWithNative(uint256)\":{\"params\":{\"subId\":\"- ID of the subscription\"}},\"getActiveSubscriptionIds(uint256,uint256)\":{\"details\":\"the order of IDs in the list is **not guaranteed**, therefore, if making successive calls, oneshould consider keeping the blockheight constant to ensure a holistic picture of the contract state\",\"params\":{\"maxCount\":\"maximum number of subscriptions to return, 0 to return all\",\"startIndex\":\"index of the subscription to start from\"}},\"getSubscription(uint256)\":{\"params\":{\"subId\":\"- ID of the subscription\"},\"returns\":{\"balance\":\"- LINK balance of the subscription in juels.\",\"consumers\":\"- list of consumer address which are able to use this subscription.\",\"nativeBalance\":\"- native balance of the subscription in wei.\",\"owner\":\"- owner of the subscription.\",\"reqCount\":\"- Requests count of subscription.\"}},\"removeConsumer(uint256,address)\":{\"params\":{\"consumer\":\"- Consumer to remove from the subscription\",\"subId\":\"- ID of the subscription\"}},\"requestSubscriptionOwnerTransfer(uint256,address)\":{\"params\":{\"newOwner\":\"- proposed new owner of the subscription\",\"subId\":\"- ID of the subscription\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"acceptSubscriptionOwnerTransfer(uint256)\":{\"notice\":\"Accept subscription owner transfer.\"},\"addConsumer(uint256,address)\":{\"notice\":\"Add a consumer to a VRF subscription.\"},\"cancelSubscription(uint256,address)\":{\"notice\":\"Cancel a subscription\"},\"createSubscription()\":{\"notice\":\"Create a VRF subscription.\"},\"fundSubscriptionWithNative(uint256)\":{\"notice\":\"Fund a subscription with native.This method expects msg.value to be greater than or equal to 0.\"},\"getActiveSubscriptionIds(uint256,uint256)\":{\"notice\":\"Paginate through all active VRF subscriptions.\"},\"getSubscription(uint256)\":{\"notice\":\"Get a VRF subscription.\"},\"removeConsumer(uint256,address)\":{\"notice\":\"Remove a consumer from a VRF subscription.\"},\"requestSubscriptionOwnerTransfer(uint256,address)\":{\"notice\":\"Request subscription owner transfer.\"}},\"notice\":\"The IVRFSubscriptionV2Plus interface defines the subscriptionrelated methods implemented by the V2Plus coordinator.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol\":\"IVRFSubscriptionV2Plus\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol\":{\"keccak256\":\"0x85b348297ce36794e3bf97a47c001fc216bd0ee243e91514a7b395f3fcd189b0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5b67dd54c0f1083d804f9c0ac6b6a62db1727b090f6d1afb0a8107baea7b40d8\",\"dweb:/ipfs/QmbD4vuTA7sBtR4DxeDjKr2pC51xgw8RRef2AmodnH5B1F\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/// @notice The IVRFSubscriptionV2Plus interface defines the subscription\n/// @notice related methods implemented by the V2Plus coordinator.\ninterface IVRFSubscriptionV2Plus {\n  /**\n   * @notice Add a consumer to a VRF subscription.\n   * @param subId - ID of the subscription\n   * @param consumer - New consumer which can use the subscription\n   */\n  function addConsumer(uint256 subId, address consumer) external;\n\n  /**\n   * @notice Remove a consumer from a VRF subscription.\n   * @param subId - ID of the subscription\n   * @param consumer - Consumer to remove from the subscription\n   */\n  function removeConsumer(uint256 subId, address consumer) external;\n\n  /**\n   * @notice Cancel a subscription\n   * @param subId - ID of the subscription\n   * @param to - Where to send the remaining LINK to\n   */\n  function cancelSubscription(uint256 subId, address to) external;\n\n  /**\n   * @notice Accept subscription owner transfer.\n   * @param subId - ID of the subscription\n   * @dev will revert if original owner of subId has\n   * not requested that msg.sender become the new owner.\n   */\n  function acceptSubscriptionOwnerTransfer(uint256 subId) external;\n\n  /**\n   * @notice Request subscription owner transfer.\n   * @param subId - ID of the subscription\n   * @param newOwner - proposed new owner of the subscription\n   */\n  function requestSubscriptionOwnerTransfer(uint256 subId, address newOwner) external;\n\n  /**\n   * @notice Create a VRF subscription.\n   * @return subId - A unique subscription id.\n   * @dev You can manage the consumer set dynamically with addConsumer/removeConsumer.\n   * @dev Note to fund the subscription with LINK, use transferAndCall. For example\n   * @dev  LINKTOKEN.transferAndCall(\n   * @dev    address(COORDINATOR),\n   * @dev    amount,\n   * @dev    abi.encode(subId));\n   * @dev Note to fund the subscription with Native, use fundSubscriptionWithNative. Be sure\n   * @dev  to send Native with the call, for example:\n   * @dev COORDINATOR.fundSubscriptionWithNative{value: amount}(subId);\n   */\n  function createSubscription() external returns (uint256 subId);\n\n  /**\n   * @notice Get a VRF subscription.\n   * @param subId - ID of the subscription\n   * @return balance - LINK balance of the subscription in juels.\n   * @return nativeBalance - native balance of the subscription in wei.\n   * @return reqCount - Requests count of subscription.\n   * @return owner - owner of the subscription.\n   * @return consumers - list of consumer address which are able to use this subscription.\n   */\n  function getSubscription(\n    uint256 subId\n  )\n    external\n    view\n    returns (uint96 balance, uint96 nativeBalance, uint64 reqCount, address owner, address[] memory consumers);\n\n  /*\n   * @notice Check to see if there exists a request commitment consumers\n   * for all consumers and keyhashes for a given sub.\n   * @param subId - ID of the subscription\n   * @return true if there exists at least one unfulfilled request for the subscription, false\n   * otherwise.\n   */\n  function pendingRequestExists(uint256 subId) external view returns (bool);\n\n  /**\n   * @notice Paginate through all active VRF subscriptions.\n   * @param startIndex index of the subscription to start from\n   * @param maxCount maximum number of subscriptions to return, 0 to return all\n   * @dev the order of IDs in the list is **not guaranteed**, therefore, if making successive calls, one\n   * @dev should consider keeping the blockheight constant to ensure a holistic picture of the contract state\n   */\n  function getActiveSubscriptionIds(uint256 startIndex, uint256 maxCount) external view returns (uint256[] memory);\n\n  /**\n   * @notice Fund a subscription with native.\n   * @param subId - ID of the subscription\n   * @notice This method expects msg.value to be greater than or equal to 0.\n   */\n  function fundSubscriptionWithNative(uint256 subId) external payable;\n}\n",
+  "sourcePath": "@chainlink\\contracts\\src\\v0.8\\vrf\\dev\\interfaces\\IVRFSubscriptionV2Plus.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts/src/v0.8/vrf/dev/interfaces/IVRFSubscriptionV2Plus.sol",
+    "exportedSymbols": {
+      "IVRFSubscriptionV2Plus": [
+        483
+      ]
+    },
+    "id": 484,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 396,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:6"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IVRFSubscriptionV2Plus",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 397,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:141:6",
+          "text": "@notice The IVRFSubscriptionV2Plus interface defines the subscription\n @notice related methods implemented by the V2Plus coordinator."
+        },
+        "fullyImplemented": false,
+        "id": 483,
+        "linearizedBaseContracts": [
+          483
+        ],
+        "name": "IVRFSubscriptionV2Plus",
+        "nameLocation": "208:22:6",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 398,
+              "nodeType": "StructuredDocumentation",
+              "src": "235:170:6",
+              "text": " @notice Add a consumer to a VRF subscription.\n @param subId - ID of the subscription\n @param consumer - New consumer which can use the subscription"
+            },
+            "functionSelector": "bec4c08c",
+            "id": 405,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addConsumer",
+            "nameLocation": "417:11:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 403,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 400,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "437:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 405,
+                  "src": "429:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 399,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "429:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 402,
+                  "mutability": "mutable",
+                  "name": "consumer",
+                  "nameLocation": "452:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 405,
+                  "src": "444:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 401,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "444:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "428:33:6"
+            },
+            "returnParameters": {
+              "id": 404,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "470:0:6"
+            },
+            "scope": 483,
+            "src": "408:63:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 406,
+              "nodeType": "StructuredDocumentation",
+              "src": "475:172:6",
+              "text": " @notice Remove a consumer from a VRF subscription.\n @param subId - ID of the subscription\n @param consumer - Consumer to remove from the subscription"
+            },
+            "functionSelector": "cb631797",
+            "id": 413,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeConsumer",
+            "nameLocation": "659:14:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 411,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 408,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "682:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 413,
+                  "src": "674:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 407,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "674:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 410,
+                  "mutability": "mutable",
+                  "name": "consumer",
+                  "nameLocation": "697:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 413,
+                  "src": "689:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 409,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "689:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "673:33:6"
+            },
+            "returnParameters": {
+              "id": 412,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "715:0:6"
+            },
+            "scope": 483,
+            "src": "650:66:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 414,
+              "nodeType": "StructuredDocumentation",
+              "src": "720:140:6",
+              "text": " @notice Cancel a subscription\n @param subId - ID of the subscription\n @param to - Where to send the remaining LINK to"
+            },
+            "functionSelector": "0ae09540",
+            "id": 421,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "cancelSubscription",
+            "nameLocation": "872:18:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 419,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 416,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "899:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 421,
+                  "src": "891:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 415,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "891:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 418,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "914:2:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 421,
+                  "src": "906:10:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 417,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "906:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:27:6"
+            },
+            "returnParameters": {
+              "id": 420,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "926:0:6"
+            },
+            "scope": 483,
+            "src": "863:64:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 422,
+              "nodeType": "StructuredDocumentation",
+              "src": "931:211:6",
+              "text": " @notice Accept subscription owner transfer.\n @param subId - ID of the subscription\n @dev will revert if original owner of subId has\n not requested that msg.sender become the new owner."
+            },
+            "functionSelector": "b2a7cac5",
+            "id": 427,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "acceptSubscriptionOwnerTransfer",
+            "nameLocation": "1154:31:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 425,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 424,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "1194:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 427,
+                  "src": "1186:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 423,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1186:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1185:15:6"
+            },
+            "returnParameters": {
+              "id": 426,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1209:0:6"
+            },
+            "scope": 483,
+            "src": "1145:65:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 428,
+              "nodeType": "StructuredDocumentation",
+              "src": "1214:164:6",
+              "text": " @notice Request subscription owner transfer.\n @param subId - ID of the subscription\n @param newOwner - proposed new owner of the subscription"
+            },
+            "functionSelector": "dac83d29",
+            "id": 435,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "requestSubscriptionOwnerTransfer",
+            "nameLocation": "1390:32:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 433,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 430,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "1431:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 435,
+                  "src": "1423:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 429,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1423:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 432,
+                  "mutability": "mutable",
+                  "name": "newOwner",
+                  "nameLocation": "1446:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 435,
+                  "src": "1438:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 431,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1438:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1422:33:6"
+            },
+            "returnParameters": {
+              "id": 434,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1464:0:6"
+            },
+            "scope": 483,
+            "src": "1381:84:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 436,
+              "nodeType": "StructuredDocumentation",
+              "src": "1469:613:6",
+              "text": " @notice Create a VRF subscription.\n @return subId - A unique subscription id.\n @dev You can manage the consumer set dynamically with addConsumer/removeConsumer.\n @dev Note to fund the subscription with LINK, use transferAndCall. For example\n @dev  LINKTOKEN.transferAndCall(\n @dev    address(COORDINATOR),\n @dev    amount,\n @dev    abi.encode(subId));\n @dev Note to fund the subscription with Native, use fundSubscriptionWithNative. Be sure\n @dev  to send Native with the call, for example:\n @dev COORDINATOR.fundSubscriptionWithNative{value: amount}(subId);"
+            },
+            "functionSelector": "a21a23e4",
+            "id": 441,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createSubscription",
+            "nameLocation": "2094:18:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 437,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2112:2:6"
+            },
+            "returnParameters": {
+              "id": 440,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 439,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "2141:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 441,
+                  "src": "2133:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 438,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2133:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2132:15:6"
+            },
+            "scope": 483,
+            "src": "2085:63:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 442,
+              "nodeType": "StructuredDocumentation",
+              "src": "2152:422:6",
+              "text": " @notice Get a VRF subscription.\n @param subId - ID of the subscription\n @return balance - LINK balance of the subscription in juels.\n @return nativeBalance - native balance of the subscription in wei.\n @return reqCount - Requests count of subscription.\n @return owner - owner of the subscription.\n @return consumers - list of consumer address which are able to use this subscription."
+            },
+            "functionSelector": "dc311dd3",
+            "id": 458,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSubscription",
+            "nameLocation": "2586:15:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 444,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "2615:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2607:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 443,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2607:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2601:23:6"
+            },
+            "returnParameters": {
+              "id": 457,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 447,
+                  "mutability": "mutable",
+                  "name": "balance",
+                  "nameLocation": "2667:7:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2660:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 446,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2660:6:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 449,
+                  "mutability": "mutable",
+                  "name": "nativeBalance",
+                  "nameLocation": "2683:13:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2676:20:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint96",
+                    "typeString": "uint96"
+                  },
+                  "typeName": {
+                    "id": 448,
+                    "name": "uint96",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2676:6:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint96",
+                      "typeString": "uint96"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 451,
+                  "mutability": "mutable",
+                  "name": "reqCount",
+                  "nameLocation": "2705:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2698:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 450,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2698:6:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 453,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "2723:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2715:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 452,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2715:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 456,
+                  "mutability": "mutable",
+                  "name": "consumers",
+                  "nameLocation": "2747:9:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 458,
+                  "src": "2730:26:6",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 454,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2730:7:6",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 455,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2730:9:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2659:98:6"
+            },
+            "scope": 483,
+            "src": "2577:181:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "41af6c87",
+            "id": 465,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pendingRequestExists",
+            "nameLocation": "3063:20:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 461,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 460,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "3092:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 465,
+                  "src": "3084:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 459,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3084:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3083:15:6"
+            },
+            "returnParameters": {
+              "id": 464,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 463,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 465,
+                  "src": "3122:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 462,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3122:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3121:6:6"
+            },
+            "scope": 483,
+            "src": "3054:74:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 466,
+              "nodeType": "StructuredDocumentation",
+              "src": "3132:427:6",
+              "text": " @notice Paginate through all active VRF subscriptions.\n @param startIndex index of the subscription to start from\n @param maxCount maximum number of subscriptions to return, 0 to return all\n @dev the order of IDs in the list is **not guaranteed**, therefore, if making successive calls, one\n @dev should consider keeping the blockheight constant to ensure a holistic picture of the contract state"
+            },
+            "functionSelector": "aefb212f",
+            "id": 476,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getActiveSubscriptionIds",
+            "nameLocation": "3571:24:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 471,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 468,
+                  "mutability": "mutable",
+                  "name": "startIndex",
+                  "nameLocation": "3604:10:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "3596:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 467,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3596:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 470,
+                  "mutability": "mutable",
+                  "name": "maxCount",
+                  "nameLocation": "3624:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "3616:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 469,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3616:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3595:38:6"
+            },
+            "returnParameters": {
+              "id": 475,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 474,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "3657:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 472,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "3657:7:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 473,
+                    "nodeType": "ArrayTypeName",
+                    "src": "3657:9:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3656:18:6"
+            },
+            "scope": 483,
+            "src": "3562:113:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 477,
+              "nodeType": "StructuredDocumentation",
+              "src": "3679:175:6",
+              "text": " @notice Fund a subscription with native.\n @param subId - ID of the subscription\n @notice This method expects msg.value to be greater than or equal to 0."
+            },
+            "functionSelector": "95b55cfc",
+            "id": 482,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "fundSubscriptionWithNative",
+            "nameLocation": "3866:26:6",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 480,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 479,
+                  "mutability": "mutable",
+                  "name": "subId",
+                  "nameLocation": "3901:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 482,
+                  "src": "3893:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 478,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3893:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3892:15:6"
+            },
+            "returnParameters": {
+              "id": 481,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3924:0:6"
+            },
+            "scope": 483,
+            "src": "3857:68:6",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 484,
+        "src": "198:3729:6",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:3896:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.24+commit.e11b9ed9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-05-29T17:54:32.707Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "acceptSubscriptionOwnerTransfer(uint256)": {
+        "details": "will revert if original owner of subId has not requested that msg.sender become the new owner.",
+        "params": {
+          "subId": "- ID of the subscription"
+        }
+      },
+      "addConsumer(uint256,address)": {
+        "params": {
+          "consumer": "- New consumer which can use the subscription",
+          "subId": "- ID of the subscription"
+        }
+      },
+      "cancelSubscription(uint256,address)": {
+        "params": {
+          "subId": "- ID of the subscription",
+          "to": "- Where to send the remaining LINK to"
+        }
+      },
+      "createSubscription()": {
+        "details": "You can manage the consumer set dynamically with addConsumer/removeConsumer.Note to fund the subscription with LINK, use transferAndCall. For exampleLINKTOKEN.transferAndCall(address(COORDINATOR),amount,abi.encode(subId));Note to fund the subscription with Native, use fundSubscriptionWithNative. Be sureto send Native with the call, for example:COORDINATOR.fundSubscriptionWithNative{value: amount}(subId);",
+        "returns": {
+          "subId": "- A unique subscription id."
+        }
+      },
+      "fundSubscriptionWithNative(uint256)": {
+        "params": {
+          "subId": "- ID of the subscription"
+        }
+      },
+      "getActiveSubscriptionIds(uint256,uint256)": {
+        "details": "the order of IDs in the list is **not guaranteed**, therefore, if making successive calls, oneshould consider keeping the blockheight constant to ensure a holistic picture of the contract state",
+        "params": {
+          "maxCount": "maximum number of subscriptions to return, 0 to return all",
+          "startIndex": "index of the subscription to start from"
+        }
+      },
+      "getSubscription(uint256)": {
+        "params": {
+          "subId": "- ID of the subscription"
+        },
+        "returns": {
+          "balance": "- LINK balance of the subscription in juels.",
+          "consumers": "- list of consumer address which are able to use this subscription.",
+          "nativeBalance": "- native balance of the subscription in wei.",
+          "owner": "- owner of the subscription.",
+          "reqCount": "- Requests count of subscription."
+        }
+      },
+      "removeConsumer(uint256,address)": {
+        "params": {
+          "consumer": "- Consumer to remove from the subscription",
+          "subId": "- ID of the subscription"
+        }
+      },
+      "requestSubscriptionOwnerTransfer(uint256,address)": {
+        "params": {
+          "newOwner": "- proposed new owner of the subscription",
+          "subId": "- ID of the subscription"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "acceptSubscriptionOwnerTransfer(uint256)": {
+        "notice": "Accept subscription owner transfer."
+      },
+      "addConsumer(uint256,address)": {
+        "notice": "Add a consumer to a VRF subscription."
+      },
+      "cancelSubscription(uint256,address)": {
+        "notice": "Cancel a subscription"
+      },
+      "createSubscription()": {
+        "notice": "Create a VRF subscription."
+      },
+      "fundSubscriptionWithNative(uint256)": {
+        "notice": "Fund a subscription with native.This method expects msg.value to be greater than or equal to 0."
+      },
+      "getActiveSubscriptionIds(uint256,uint256)": {
+        "notice": "Paginate through all active VRF subscriptions."
+      },
+      "getSubscription(uint256)": {
+        "notice": "Get a VRF subscription."
+      },
+      "removeConsumer(uint256,address)": {
+        "notice": "Remove a consumer from a VRF subscription."
+      },
+      "requestSubscriptionOwnerTransfer(uint256,address)": {
+        "notice": "Request subscription owner transfer."
+      }
+    },
+    "notice": "The IVRFSubscriptionV2Plus interface defines the subscriptionrelated methods implemented by the V2Plus coordinator.",
+    "version": 1
+  }
+}
