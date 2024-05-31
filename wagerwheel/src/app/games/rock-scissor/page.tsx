@@ -128,7 +128,7 @@ export default function Rock() {
                 <div className="p-10 m-auto h-screen w-2/3 bg-gradient-to-r from-slate-100 to-slate-200">
                     <div className="grid grid-rows-5 gap-1">
                         {rows.map((row) => (   
-                            <div className="h-14 mx-10 grid grid-cols-3 gap-4">
+                            <div className="h-14 mx-10 grid grid-cols-3 gap-4" key={row.id}>
                                 <div className={`flex justify-center ${chooseElement===-1 ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-900'} ${row.attemptedOn===0 && 'border border-gray-400'} cursor-pointer text-center rounded-lg transition duration-700 ease-in-out`} 
                                 onClick={()=>revealRows(row.id,0)}>
                                     <div className="m-auto">

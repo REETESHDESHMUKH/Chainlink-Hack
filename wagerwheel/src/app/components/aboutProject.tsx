@@ -23,7 +23,7 @@ export const AboutProject = () => {
             </div>
             <div className="flex justify-center">
                 <p className="mt-8 max-w-3xl text-xl  text-slate-300/40">
-                    Our decentralized gaming platform leverages blockchain technology and Chainlink's Verifiable Random Function (VRF) to provide a trustless and transparent gaming experience. The platform hosts various small games such as Rock-Paper-Scissors, Mines, and Spin the Wheel, ensuring fair outcomes through verifiable randomness. By deploying smart contracts on the Sepolia testnet and using Alchemy for seamless blockchain interaction, we ensure that game outcomes are provably fair and secure. Players can enjoy their favorite games with confidence, knowing that each result is random and unmanipulable.
+                    Our decentralized gaming platform leverages blockchain technology and Chainlink&apos;s Verifiable Random Function (VRF) to provide a trustless and transparent gaming experience. The platform hosts various small games such as Rock-Paper-Scissors, Mines, and Spin the Wheel, ensuring fair outcomes through verifiable randomness. By deploying smart contracts on the Sepolia testnet and using Alchemy for seamless blockchain interaction, we ensure that game outcomes are provably fair and secure. Players can enjoy their favorite games with confidence, knowing that each result is random and unmanipulable.
                 </p>
             </div>
         </div>
