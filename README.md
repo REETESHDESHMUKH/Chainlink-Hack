@@ -7,18 +7,8 @@
 
 ![Screenshot 2024-06-01 220110](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/07c8ed8c-4ada-4f77-b36e-5b50afa3dfea)
 
-### Games
-
-<hr>
-
-![Screenshot 2024-06-01 220541](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/5582fae2-5712-4ea9-8597-818d967800ab)
-
-![Screenshot 2024-06-01 220410](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/76ff9087-4bf5-430e-8fdc-9b0f43cc1dd8)
-
-![Screenshot 2024-06-01 220521](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/a480c043-103c-487a-8242-6c9e9b058d3f)
-
-Tutorial: [Youtube Link](https://youtu.be/3e1gIILZ5h4)
-
+### Tutorial: [_youtube link_](https://youtu.be/3e1gIILZ5h4)
+### Site : [_wagerwheel.netlify.app_](https://wagerwheel.netlify.app/)
 ## Technology Stack
 
 - [Next Js](https://nextjs.org/)
