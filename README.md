@@ -41,12 +41,34 @@ The platform demonstrates the practical applications of smart contracts and dece
 
 Wager Wheels is built using a combination of smart contracts deployed on the Sepolia testnet and front-end development with [Next.js](https://nextjs.org/docs). We integrated Chainlink VRF to generate verifiable random numbers for game outcomes, ensuring transparency and fairness. [Alchemy](https://www.alchemy.com/) was used to facilitate seamless blockchain interaction, providing robust and efficient access to the Ethereum network.
 
-For the Mines game, we implemented the Fisher–Yates Shuffle Algorithm to avoid repeatable random numbers. This algorithm is designed to produce a random permutation of a finite sequence—in this case, the placement of mines. The Fisher–Yates Shuffle works as follows:
+In Rock Paper Scissor game, we requested chainlink VRF to generate 5 random number of range 1-6 ( Total number of possible permutations = 6). Each random number is allocated to each row in game.
+```
+[[0,1,2],
+[0,2,1],
+[1,0,2],
+[1,2,0],
+[2,0,1],
+[2,1,0]]
+
+where 0 -> Rock, 1 -> Paper, 2 -> Scissor
+```
+
+In Spin The Wheel game, we want only 1 random number of range (0-5) which will help in generating angle at which wheel need to stop. 
+
+```
+Angle = (Random/6) * 360
+``` 
+
+In Mines game, we implemented the Fisher–Yates Shuffle Algorithm to avoid repeatable random numbers. This algorithm is designed to produce a random permutation of a finite sequence—in this case, the placement of mines. The Fisher–Yates Shuffle works as follows:
 
 - Start with an array of elements.
+``` 
+[ 1, 2, 3, 4, 5 ..................... 25 ]
+```
 - Iterate through the array from the last element to the first.
 - For each element, generate a random index within the portion of the array that has not been shuffled yet.
 - Swap the current element with the element at the randomly generated index.
+- After shuffling the array, we just take first n number of elements from array where as n is number of mines.
 
 By using the Fisher–Yates Shuffle, we ensure that each placement of mines is unique and unpredictable, enhancing the fairness and enjoyment of the game.
 
