@@ -1,9 +1,23 @@
 # Wager Wheel
-<p> decentralised and trusted gaming platform </p>
+<p> Play Fair, Play Secure: Trustless Gaming powered by blockchain and Chainlink VRF </p>
 
-![landing page](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/de626842-988a-4568-89bf-0f2be25e060e)
+### Landing Page
 
-Tutorial: 
+<hr>
+
+![Screenshot 2024-06-01 220110](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/07c8ed8c-4ada-4f77-b36e-5b50afa3dfea)
+
+### Games
+
+<hr>
+
+![Screenshot 2024-06-01 220541](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/5582fae2-5712-4ea9-8597-818d967800ab)
+
+![Screenshot 2024-06-01 220410](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/76ff9087-4bf5-430e-8fdc-9b0f43cc1dd8)
+
+![Screenshot 2024-06-01 220521](https://github.com/REETESHDESHMUKH/Chainlink-Hack/assets/76653982/a480c043-103c-487a-8242-6c9e9b058d3f)
+
+Tutorial: [Youtube Link](https://youtu.be/3e1gIILZ5h4)
 
 ## Technology Stack
 
@@ -33,7 +47,28 @@ The platform's transparency attracts a wider audience, fostering a loyal and eng
 - **Innovative Use of Technology** : Leveraging blockchain and Chainlink VRF showcases the innovative potential of decentralized applications (dApps) in the gaming industry.
 The platform demonstrates the practical applications of smart contracts and decentralized oracles.
 
-## Flow Diagram
+## How we built it
+
+Wager Wheels is built using a combination of smart contracts deployed on the Sepolia testnet and front-end development with [Next.js](https://nextjs.org/docs). We integrated Chainlink VRF to generate verifiable random numbers for game outcomes, ensuring transparency and fairness. [Alchemy](https://www.alchemy.com/) was used to facilitate seamless blockchain interaction, providing robust and efficient access to the Ethereum network.
+
+For the Mines game, we implemented the Fisher–Yates Shuffle Algorithm to avoid repeatable random numbers. This algorithm is designed to produce a random permutation of a finite sequence—in this case, the placement of mines. The Fisher–Yates Shuffle works as follows:
+
+- Start with an array of elements.
+- Iterate through the array from the last element to the first.
+- For each element, generate a random index within the portion of the array that has not been shuffled yet.
+- Swap the current element with the element at the randomly generated index.
+
+By using the Fisher–Yates Shuffle, we ensure that each placement of mines is unique and unpredictable, enhancing the fairness and enjoyment of the game.
+
+```
+function fisherYatesShuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+```
 
 ## Team Members
 
@@ -43,15 +78,16 @@ The platform demonstrates the practical applications of smart contracts and dece
 - M Sai Srinivas
 
 ## Setup 
+### Requirement 
+  1. API key : This can be obtained through Alchemy. 
+  2. Contract Address :
 
-- Requirement : 
-  1. Project Id/ API key : This can be obtained through Alchemy. 
-  2. Mnemonic : This is security phrase of your wallet account.
-     ***note** use this in .env file or directly in truffle.config.js and web3Provider.js files
+### Smart Contract :
+  1. `npm i`
+  2. `truffle compile`
+  3. `truffle migrate --reset --network sepolia`
 
-1. `npm i`
-2. `truffle compile`
-3. `truffle migrate --reset --network sepolia`
-4. `cd wagerwheel`
-5. `npm i`
-6. `npm run dev`
+### Frontend : 
+1. `cd wagerwheel`
+2. `npm i`
+3. `npm run dev`
