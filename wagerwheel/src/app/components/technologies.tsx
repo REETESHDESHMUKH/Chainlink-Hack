@@ -21,6 +21,12 @@ export const Technologies = () => {
             name: 'Chainlink',
             work: 'Decentralized Oracle Network',
             link: 'https://chain.link/'
+        },
+        {
+            logo: 'alchemy.jpg',  // Added Alchemy logo
+            name: 'Alchemy',      // Name
+            work: 'Blockchain Development Platform',  // Work description
+            link: 'https://www.alchemy.com/'
         }
     ]
     // Avatar Styles
