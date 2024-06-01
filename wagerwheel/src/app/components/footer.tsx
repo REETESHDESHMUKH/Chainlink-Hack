@@ -8,11 +8,11 @@ import Link from 'next/link';
 export const Footer = () => {
     const links = [
         {
-            href: 'mailto:wagerwheel@gmail.com',
+            href: 'mailto:reeteshd29@gmail.com',
             icon: <EmailIcon className='h-8 w-8'/>
         },
         {
-            href: 'githublink',
+            href: 'https://github.com/REETESHDESHMUKH/Chainlink-Hack',
             icon: <GitHubIcon className='h-8 w-8'/>
         }
     ]
@@ -28,7 +28,7 @@ export const Footer = () => {
                 ))}
                 
             </div>
-            <p className='text-sm text-slate-100/50'>© 2024 Wagerwheel | All rights reserved.</p>
+            <p className='text-sm text-slate-100/50'>© 2024 Wager Wheels | All rights reserved.</p>
         </div>
     )
 }

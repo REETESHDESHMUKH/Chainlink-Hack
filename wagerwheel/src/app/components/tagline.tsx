@@ -10,7 +10,7 @@ export const Tagline = () => {
                     Play, Win, Earn Rewards.
                 </h1>
                 <p className="mb-8 text-lg text-slate-300/40 font-medium" data-aos="fade-down" data-aos-delay="200">
-                    Play games on Wagerwheel and earn ETH.
+                    Play games on Wager Wheels and earn ETH.
                 </p>
                 <div className="mb-6" data-aos="fade-down">
                     <div className="relative inline-flex before:absolute before:inset-0">

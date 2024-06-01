@@ -34,8 +34,8 @@ export default function SpinWheel() {
 
     const stopGame = async () => {
         const random = await contract.methods.getRandom().call({ from: account });
-        setFinalRotation(Number(random[0]-1)*60);
-        setScore(rotationToMultiplier[random[0]-1]);
+        setFinalRotation((Number(random[0])-1)*60);
+        setScore(rotationToMultiplier[(Number(random[0])-1)]);
         setTimeout(() => {
             setSpinning(false);
             setGameOver(true);
